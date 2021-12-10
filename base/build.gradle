@@ -1,21 +1,20 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
-    compileSdk libs.versions.compilesdk.get().toInteger()
+    compileSdk 30
+
     defaultConfig {
-        applicationId "com.lewie.ltframework"
         minSdk 21
         targetSdk libs.versions.targetsdk.get().toInteger()
         versionCode libs.versions.versionCode.get().toInteger()
         versionName  libs.versions.versionName.get()
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary true
-        }
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -30,23 +29,11 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
-        useIR = true
     }
-    buildFeatures {
-        compose true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion '1.5.21'
-    }
-    packagingOptions {
-        resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
-        }
-    }
+
 }
 
 dependencies {
-    api project(':main')
-
+    api libs.bundles.base
+    kapt libs.bundles.kapt
 }

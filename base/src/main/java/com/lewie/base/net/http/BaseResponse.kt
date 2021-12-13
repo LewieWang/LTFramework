@@ -1,8 +1,6 @@
 package com.lewie.base.net.http
 
-import com.squareup.moshi.JsonClass
 
-@JsonClass(generateAdapter = true)
 class BaseResponse<T> {
     var data: T? = null
     var errorCode: Int? = null
@@ -19,7 +17,7 @@ inline fun <T> BaseResponse<T>.next(bloc: BaseResponse<T>.() -> Unit): BaseRespo
         bloc()
         this
     } else {//出现异常（网络/服务器/自定义异常）执行这里 不用bloc
-        this;
+        this
     }
 
 }

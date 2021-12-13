@@ -35,5 +35,4 @@ android {
 
 dependencies {
     api libs.bundles.base
-    kapt libs.bundles.kapt
 }

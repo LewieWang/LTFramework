@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.whenStarted
 import com.lewie.ltframework.ui.theme.LTFrameworkTheme
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -29,11 +30,15 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        mainVm.requestNet()
+        mainVm.funFlowRequest()
         lifecycleScope.launch {
-            mainVm.stateFlow.collect {
-//                content = it.total.toString()
+            lifecycle.whenStarted {
+                mainVm.stateFlow.collect {
+                        println("------->" + it.pageCount)
+
+                }
             }
+
         }
 
     }

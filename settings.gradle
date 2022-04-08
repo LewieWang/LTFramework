@@ -8,14 +8,14 @@ dependencyResolutionManagement {
     versionCatalogs {
         libs {
 
-            version('compilesdk', '30')
+            version('compilesdk', '31')
             version('targetsdk', '30')
             version('versionCode', '100')
             version('versionName', '1.0.0')
             version('composeVersion', '1.0.1')
 
 
-            alias('coil').to('io.coil-kt', 'coil').version('1.1.1')
+            alias('coil').to('io.coil-kt', 'coil').version('2.0.0-rc02')
             alias('x_core').to('androidx.core:core-ktx:1.5.0')
             alias('x_appcompat').to('androidx.appcompat:appcompat:1.3.0')
             alias('material').to('com.google.android.material:material:1.3.0')
@@ -25,14 +25,14 @@ dependencyResolutionManagement {
             alias('x_compose_activity').to('androidx.activity:activity-compose:1.3.1')
             alias('x_lifecycle').to('androidx.lifecycle:lifecycle-runtime-ktx:2.3.1')
             alias('x_coroutines').to('org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1')
-            alias('x_c_core').to('org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1')
-            alias('logging_interceptor').to('com.squareup.okhttp3:logging-interceptor:4.2.0')
+            alias('x_corou_core').to('org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1')
+            alias('logging_interceptor').to('com.squareup.okhttp3:logging-interceptor:4.9.2')
             alias('retrofit2').to('com.squareup.retrofit2:retrofit:2.9.0')
             alias('gson').to('com.squareup.retrofit2:converter-gson:2.9.0')
 
-            bundle('base', ['x_core', 'x_appcompat', 'material','x_compose_ui','x_compose_material',
+            bundle('base', ['coil','x_core', 'x_appcompat', 'material','x_compose_ui','x_compose_material',
                            'x_compose_tools','x_compose_activity','x_lifecycle','x_coroutines'
-            ,'retrofit2','logging_interceptor','x_c_core','gson'])
+            ,'retrofit2','logging_interceptor','x_corou_core','gson'])
 
         }
     }

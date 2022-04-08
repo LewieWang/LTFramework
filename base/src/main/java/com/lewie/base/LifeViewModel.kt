@@ -1,44 +1,21 @@
 package com.lewie.base
 
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import com.lewie.base.util.log
 
-open class LifeViewModel : ViewModel(), LifecycleObserver {
-    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    open fun onCreate() {
-        log("===OnLifecycleEvent==onCreate==>")
-    }
+open class LifeViewModel : ViewModel(), LifecycleEventObserver {
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_START)
-    open fun onStart() {
-        log("===OnLifecycleEvent==onStart==>")
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-    open fun onResume() {
-        log("===OnLifecycleEvent==onResume==>")
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
-    open fun onPause() {
-        log("===OnLifecycleEvent==onPause==>")
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-    open fun onStop() {
-        log("===OnLifecycleEvent==onStop==>")
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    fun onDestroy() {
-        log("===OnLifecycleEvent==onDestroy==>")
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
-    open fun onAny() {
-        log("===OnLifecycleEvent==onAny==>")
+    override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
+        when (event) {
+            Lifecycle.Event.ON_CREATE -> log("===OnLifecycleEvent==ON_CREATE==>")
+            Lifecycle.Event.ON_START -> log("===OnLifecycleEvent==ON_START==>")
+            Lifecycle.Event.ON_RESUME -> log("===OnLifecycleEvent==ON_RESUME==>")
+            Lifecycle.Event.ON_PAUSE -> log("===OnLifecycleEvent==ON_PAUSE==>")
+            Lifecycle.Event.ON_STOP -> log("===OnLifecycleEvent==ON_STOP==>")
+            Lifecycle.Event.ON_DESTROY -> log("===OnLifecycleEvent==ON_DESTROY==>")
+            else -> {
+                log("===OnLifecycleEvent==ON_ANY==>")
+            }
+        }
     }
 }

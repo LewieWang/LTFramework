@@ -3,6 +3,7 @@ package com.lewie.ltframework
 import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.lewie.base.BaseViewModel
+import com.lewie.base.model.Data
 import com.lewie.base.model.ListProjectBean
 
 import com.lewie.base.net.http.ApiException
@@ -13,8 +14,7 @@ import kotlinx.coroutines.launch
 
 class MainVM : BaseViewModel() {
 
-
-     val stateFlow by lazy { MutableStateFlow(ListProjectBean()) }
+     val stateFlow by lazy { MutableStateFlow(Data()) }
      fun funFlowRequest() {
         viewModelScope.launch {
             requestFlow {
@@ -29,8 +29,7 @@ class MainVM : BaseViewModel() {
 
                 }
             }.collect {
-                stateFlow.value = it.data!!
-                Log.e("data===>", "data==requestFlow===>${it.data}")
+                stateFlow.emit(it.data ?: Data())
             }
         }
     }

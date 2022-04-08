@@ -1,8 +1,6 @@
 package com.lewie.base.net.http
 
-import com.lewie.base.model.ListProjectBean
-import com.lewie.base.net.http.BaseResponse
-import com.lewie.base.net.http.retrofit
+import com.lewie.base.model.Data
 import retrofit2.http.GET
 
 val Api: ApiInterface by lazy {
@@ -11,5 +9,5 @@ val Api: ApiInterface by lazy {
 interface ApiInterface {
 
     @GET("/article/listproject/0/json")
-    suspend fun getListProject(): BaseResponse<ListProjectBean?>
+    suspend fun getListProject(): BaseResponse<Data?>
 }

@@ -1,38 +1,18 @@
 package com.lewie.ltframework
 
-import android.util.Log
-import androidx.lifecycle.viewModelScope
-import com.lewie.base.BaseViewModel
-import com.lewie.base.model.Data
-import com.lewie.base.model.ListProjectBean
 
-import com.lewie.base.net.http.ApiException
-import com.lewie.base.requestFlow
-import kotlinx.coroutines.flow.*
 
-import kotlinx.coroutines.launch
+import androidx.lifecycle.*
+import com.lewie.base.repository.ListRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MainVM : BaseViewModel() {
+@HiltViewModel
+class MainVM @Inject constructor(
+    repository: ListRepository
+) : ViewModel() {
 
-     val stateFlow by lazy { MutableStateFlow(Data()) }
-     fun funFlowRequest() {
-        viewModelScope.launch {
-            requestFlow {
-                getListProject()
-            }.catch{ cause ->
-                run {
-                    when(cause){
-                        is ApiException ->{
-
-                        }
-                    }
-
-                }
-            }.collect {
-                stateFlow.emit(it.data ?: Data())
-            }
-        }
-    }
+     val result = repository.getList()
 
 }
 

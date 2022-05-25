@@ -17,6 +17,7 @@ dependencyResolutionManagement {
 
             alias('coil').to('io.coil-kt', 'coil').version('2.0.0')
             alias('coilcompose').to('io.coil-kt', 'coil-compose').version('2.0.0')
+            alias('accompanist_systemui').to('com.google.accompanist', 'accompanist-systemuicontroller').version('0.24.8-beta')
             alias('x_core').to('androidx.core:core-ktx:1.5.0')
             alias('x_appcompat').to('androidx.appcompat:appcompat:1.3.0')
             alias('material').to('com.google.android.material:material:1.3.0')
@@ -39,7 +40,7 @@ dependencyResolutionManagement {
             bundle('base', ['coil','coilcompose','x_core', 'x_appcompat', 'material','x_compose_ui','x_compose_material',
                            'x_compose_tools','x_compose_activity','x_lifecycle','x_coroutines','hilt'
             ,'retrofit2','logging_interceptor','x_corou_core','gson','x_compose_extensions','x_compose_viewmodel'
-            ,'x_compose_livedata','x_compose_vm_compose'])
+            ,'x_compose_livedata','x_compose_vm_compose','accompanist_systemui'])
             bundle('compiler',['h_compiler'])
             bundle('app',['hilt'])
         }

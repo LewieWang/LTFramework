@@ -1,8 +1,8 @@
-package com.lewie.base.comment
+package com.lewie.base.common
 
 import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
-import com.lewie.base.comment.vb.VbItemCell
+import com.lewie.base.common.vb.VbItemCell
 
 
 object DiffConfig {

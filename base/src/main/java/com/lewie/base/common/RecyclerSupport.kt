@@ -1,8 +1,8 @@
-package com.lewie.base.comment
+package com.lewie.base.common
 
 import android.view.View
-import com.lewie.base.comment.vb.VbStableAdapter
-import com.lewie.base.comment.vb.VbRecyclerAdapter
+import com.lewie.base.common.vb.VbStableAdapter
+import com.lewie.base.common.vb.VbRecyclerAdapter
 
 
 /**

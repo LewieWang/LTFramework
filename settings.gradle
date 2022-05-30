@@ -13,11 +13,13 @@ dependencyResolutionManagement {
             version('versionCode', '100')
             version('versionName', '1.0.0')
             version('composeVersion', '1.0.1')
+            version('accompanistVersion', '0.24.8-beta')
 
 
             alias('coil').to('io.coil-kt', 'coil').version('2.0.0')
             alias('coilcompose').to('io.coil-kt', 'coil-compose').version('2.0.0')
-            alias('accompanist_systemui').to('com.google.accompanist', 'accompanist-systemuicontroller').version('0.24.8-beta')
+            alias('accompanist_systemui').to('com.google.accompanist', 'accompanist-systemuicontroller').versionRef('accompanistVersion')
+            alias('accompanist_navigation_animation').to('com.google.accompanist', 'accompanist-navigation-animation').versionRef('accompanistVersion')
             alias('x_core').to('androidx.core:core-ktx:1.5.0')
             alias('x_appcompat').to('androidx.appcompat:appcompat:1.3.0')
             alias('material').to('com.google.android.material:material:1.3.0')
@@ -29,6 +31,7 @@ dependencyResolutionManagement {
             alias('x_compose_viewmodel').to("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1")
             alias('x_compose_livedata').to("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1")
             alias('x_compose_vm_compose').to("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1")
+            alias('x_compose_navigation').to("androidx.navigation:navigation-compose:2.4.2")
             alias('x_lifecycle').to('androidx.lifecycle:lifecycle-runtime-ktx:2.3.1')
             alias('x_coroutines').to('org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1')
             alias('x_corou_core').to('org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1')
@@ -37,10 +40,14 @@ dependencyResolutionManagement {
             alias('gson').to('com.squareup.retrofit2:converter-gson:2.9.0')
             alias('hilt').to('com.google.dagger:hilt-android:2.38.1')
             alias('h_compiler').to('com.google.dagger:hilt-android-compiler:2.38.1')
+
+
+
             bundle('base', ['coil','coilcompose','x_core', 'x_appcompat', 'material','x_compose_ui','x_compose_material',
                            'x_compose_tools','x_compose_activity','x_lifecycle','x_coroutines','hilt'
             ,'retrofit2','logging_interceptor','x_corou_core','gson','x_compose_extensions','x_compose_viewmodel'
-            ,'x_compose_livedata','x_compose_vm_compose','accompanist_systemui'])
+            ,'x_compose_livedata','x_compose_vm_compose','accompanist_systemui','x_compose_navigation'
+            ,'accompanist_navigation_animation'])
             bundle('compiler',['h_compiler'])
             bundle('app',['hilt'])
         }

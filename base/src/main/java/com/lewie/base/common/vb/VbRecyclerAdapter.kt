@@ -1,10 +1,9 @@
-package com.lewie.base.comment.vb
+package com.lewie.base.common.vb
 
 import android.view.ViewGroup
-import androidx.annotation.IntRange
 import androidx.recyclerview.widget.*
-import com.lewie.base.comment.DiffConfig
-import com.lewie.base.comment.RecyclerSupport
+import com.lewie.base.common.DiffConfig
+import com.lewie.base.common.RecyclerSupport
 
 /**
  * 通用列表适配器

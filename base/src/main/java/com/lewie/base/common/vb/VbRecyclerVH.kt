@@ -1,9 +1,9 @@
-package com.lewie.base.comment.vb
+package com.lewie.base.common.vb
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 
-import com.lewie.base.comment.RecyclerSupport
+import com.lewie.base.common.RecyclerSupport
 
 
 open class VbRecyclerVH(val vb: ViewBinding, val support: RecyclerSupport) :

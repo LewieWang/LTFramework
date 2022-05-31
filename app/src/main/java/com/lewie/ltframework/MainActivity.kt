@@ -36,6 +36,7 @@ class MainActivity : ComponentActivity() {
                 systemUiController.setSystemBarsColor(
                     color = Color.Transparent,
                     darkIcons = useDarkIcons
+
                 )
                 // setStatusBarsColor() and setNavigationBarColor() also exist
             }

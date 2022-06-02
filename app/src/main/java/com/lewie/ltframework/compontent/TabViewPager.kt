@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.google.accompanist.pager.*
 import com.lewie.base.model.Data
 import com.lewie.ltframework.MainVM
@@ -24,7 +25,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalPagerApi::class)
 @SuppressLint("UnrememberedMutableState")
 @Composable
-fun TabViewPager(mViewModel: MainVM) {
+fun TabViewPager(mViewModel: MainVM,navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -72,19 +73,19 @@ fun TabViewPager(mViewModel: MainVM) {
         ) { page ->
             when (page) {
                 0 -> mViewModel.result.collectAsState(initial = Data()).value?.datas?.let {
-                    MessageList(it)
+                    MessageList(it,navController)
                 }
                 1 -> mViewModel.result.collectAsState(initial = Data()).value?.datas?.let {
-                    MessageList(it)
+                    MessageList(it,navController)
                 }
                 2 -> mViewModel.result.collectAsState(initial = Data()).value?.datas?.let {
-                    MessageList(it)
+                    MessageList(it,navController)
                 }
                 3 -> mViewModel.result.collectAsState(initial = Data()).value?.datas?.let {
-                    MessageList(it)
+                    MessageList(it,navController)
                 }
                 4 -> mViewModel.result.collectAsState(initial = Data()).value?.datas?.let {
-                    MessageList(it)
+                    MessageList(it,navController)
                 }
                 else -> {
                     Column(modifier = Modifier.fillMaxSize()) {

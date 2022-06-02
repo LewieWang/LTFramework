@@ -19,9 +19,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import com.lewie.base.common.PageConstant
 import com.lewie.base.common.PageConstant.HOME_ITEM
 import com.lewie.base.model.Data
 import com.lewie.ltframework.MainVM
@@ -106,7 +109,7 @@ fun HomePage(mNavController: NavHostController, mainVm: MainVM) {
             }
         ) {
             composable(HOME_ITEM) {
-                TabViewPager(mainVm)
+                TabViewPager(mainVm,mNavController)
             }
 //            composable(COLLECTION_ITEM) {
 //                CollectionItem(mNavController, homeViewModel)

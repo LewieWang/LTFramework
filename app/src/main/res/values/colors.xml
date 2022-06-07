@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#989898</color>
     <color name="gray_white">#F8F8F8</color><!--灰白-->
+    <color name="black_transfer">#80000000</color><!--灰白-->
 </resources>

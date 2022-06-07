@@ -2,18 +2,19 @@ package com.lewie.ltframework.compontent
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.google.accompanist.pager.*
+import com.lewie.base.model.BannerData
 import com.lewie.base.model.Data
+import com.lewie.base.state.HomeListState
 import com.lewie.ltframework.MainVM
 import com.lewie.ltframework.R
 import kotlinx.coroutines.CoroutineScope
@@ -34,6 +35,8 @@ fun TabViewPager(mViewModel: MainVM,navController: NavHostController) {
             listOf("首页", "广场", "教程", "问答", "体系", "项目", "公众号")
         )
         val pagerState = rememberPagerState(initialPage = 0)//初始化页面，0就表示第一个页面
+        val homeState = remember{mutableStateOf(HomeListState())}
+
         ScrollableTabRow(
             selectedTabIndex = pagerState.currentPage,
             edgePadding = 0.dp, //消除左右间距
@@ -72,21 +75,20 @@ fun TabViewPager(mViewModel: MainVM,navController: NavHostController) {
             itemSpacing = 2.dp
         ) { page ->
             when (page) {
-                0 -> mViewModel.result.collectAsState(initial = Data()).value?.datas?.let {
-                    MessageList(it,navController)
+                0 -> {
+
+                    mViewModel.banner.collectAsState(initial = listOf()).value?.let {
+                        homeState.value.banner  = it
+
+                    }
+                    mViewModel.result.collectAsState(initial = Data()).value?.datas?.let {
+                        homeState.value.list = it
+                    }
+
+                    MessageList(homeState.value, navController)
+
                 }
-                1 -> mViewModel.result.collectAsState(initial = Data()).value?.datas?.let {
-                    MessageList(it,navController)
-                }
-                2 -> mViewModel.result.collectAsState(initial = Data()).value?.datas?.let {
-                    MessageList(it,navController)
-                }
-                3 -> mViewModel.result.collectAsState(initial = Data()).value?.datas?.let {
-                    MessageList(it,navController)
-                }
-                4 -> mViewModel.result.collectAsState(initial = Data()).value?.datas?.let {
-                    MessageList(it,navController)
-                }
+
                 else -> {
                     Column(modifier = Modifier.fillMaxSize()) {
                         Text(

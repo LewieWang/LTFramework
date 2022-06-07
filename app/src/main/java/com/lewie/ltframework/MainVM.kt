@@ -14,5 +14,8 @@ class MainVM @Inject constructor(
 
      val result = repository.getList()
 
+     val banner = repository.getBanner()
+
+
 }
 

@@ -24,4 +24,8 @@ class ListRepository @Inject constructor() : BaseRepository() {
         Api.getListProject()
     }
 
+    fun getBanner() = fire {
+        Api.getHomeBanner()
+    }
+
 }

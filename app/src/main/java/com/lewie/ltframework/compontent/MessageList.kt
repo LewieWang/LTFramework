@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Card
@@ -20,16 +19,16 @@ import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.lewie.base.common.PageConstant.WEB_VIEW_PAGE
 import com.lewie.base.model.DataX
+import com.lewie.base.state.HomeListState
 import com.lewie.base.util.encode
-import java.net.URLEncoder
-import java.nio.charset.StandardCharsets
+
 
 @SuppressLint("StaticFieldLeak")
 lateinit var mNavController: NavHostController
 
 
 @Composable
-fun MessageList(messages: List<DataX>,navController: NavHostController) {// 值可以是 List或者Array两种方式
+fun MessageList(state: HomeListState,navController: NavHostController) {// 值可以是 List或者Array两种方式
     mNavController =  navController
 
     LazyColumn(
@@ -37,8 +36,10 @@ fun MessageList(messages: List<DataX>,navController: NavHostController) {// 值�
         verticalArrangement = Arrangement.spacedBy(10.dp),
         state = rememberLazyListState(),
     ) {
-
-        itemsIndexed(items = messages) { index, item -> //遍历内容和索引
+        item{
+            HomeBanner(list = state.banner)
+        }
+        itemsIndexed(items = state.list) { index, item -> //遍历内容和索引
             MessageListItem(item, index)
 //            Spacer(Modifier.size(10.dp))
         }
@@ -53,7 +54,7 @@ fun MessageListItem(data: DataX, index: Int) {// 值可以是 List或者Array两
     }) {
         Row(verticalAlignment = Alignment.Top, modifier = Modifier.padding(5.dp),) {
             AsyncImage(
-                model = "https://pic.centanet.com/shenzhen/postimage/xinfang/20200806/b1bbe21e0a3fcfc8071654dcf3ec419d.jpg",
+                model = "https://www.wanandroid.com/blogimgs/50c115c2-cf6c-4802-aa7b-a4334de444cd.png",
                 contentDescription = null,
                 modifier = Modifier.size(130.dp, 80.dp)
             )

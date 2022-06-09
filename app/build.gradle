@@ -48,7 +48,7 @@ android {
 }
 
 dependencies {
-    api project(':main')
+    api project(':core-net')
     api libs.bundles.app
     kapt libs.bundles.compiler
 }

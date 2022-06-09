@@ -1,4 +1,4 @@
-package com.lewie.base.net
+package com.lewie.net
 
 import java.io.Serializable
 

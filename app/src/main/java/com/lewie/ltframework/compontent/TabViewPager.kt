@@ -15,6 +15,8 @@ import com.google.accompanist.pager.*
 import com.lewie.base.model.BannerData
 import com.lewie.base.model.Data
 import com.lewie.base.state.HomeListState
+import com.lewie.ltframework.BannerUiState
+import com.lewie.ltframework.ListUiState
 import com.lewie.ltframework.MainVM
 import com.lewie.ltframework.R
 import kotlinx.coroutines.CoroutineScope
@@ -76,17 +78,32 @@ fun TabViewPager(mViewModel: MainVM,navController: NavHostController) {
         ) { page ->
             when (page) {
                 0 -> {
-
-                    mViewModel.banner.collectAsState(initial = listOf()).value?.let {
-                        homeState.value.banner  = it
-
+                    mViewModel.uiState.collectAsState().value.let {
+                        when (it.listState) {
+                            ListUiState.Loading -> {}
+                            ListUiState.Error -> {}
+                            is ListUiState.Success -> {
+                                homeState.value.list = it.listState.data.datas ?: listOf()
+                            }
+                        }
+                        when (it.bannerState) {
+                            BannerUiState.Loading -> {}
+                            BannerUiState.Error -> {}
+                            is BannerUiState.Success -> {
+                                homeState.value.banner = it.bannerState.banner
+                            }
+                        }
                     }
-                    mViewModel.result.collectAsState(initial = Data()).value?.datas?.let {
-                        homeState.value.list = it
-                    }
-
                     MessageList(homeState.value, navController)
 
+//                    mViewModel.banner.collectAsState(initial = listOf()).value?.let {
+//                        homeState.value.banner  = it
+//
+//                    }
+//                    mViewModel.result.collectAsState(initial = Data()).value?.datas?.let {
+//                        homeState.value.list = it
+//                    }
+//
                 }
 
                 else -> {

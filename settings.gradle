@@ -59,4 +59,4 @@ dependencyResolutionManagement {
 rootProject.name = "LTFramework"
 include ':app'
 include ':base'
-include ':main'
+include ':core-net'

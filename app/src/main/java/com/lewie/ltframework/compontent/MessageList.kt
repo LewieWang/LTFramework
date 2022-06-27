@@ -1,16 +1,20 @@
 package com.lewie.ltframework.compontent
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -37,7 +41,26 @@ fun MessageList(state: HomeListState,navController: NavHostController) {// 值�
         state = rememberLazyListState(),
     ) {
         item{
-            HomeBanner(list = state.banner)
+            if(state.banner.isNotEmpty()){
+                Banner(data = state.banner,
+                    onImagePath = {//设置图片的url地址
+                        state.banner[it].imagePath
+                    },
+                    pagerModifier = Modifier
+                        .clip(RoundedCornerShape(3.dp)),//HorizontalPager的modifier
+                    pagerIndicatorModifier = Modifier
+                        .background(Color(0x90000000))
+                        .padding(horizontal = 10.dp)
+                        .padding(top = 10.dp, bottom = 10.dp),//指示器Row的整个样式
+                    desc = {
+                        //指示器文本内容，也就是标题一、标题二
+                        Text(text = state.banner[it].title, color = Color.White)
+                    },
+                    onBannerItemClick = {
+                        mNavController.navigate("${WEB_VIEW_PAGE}/${state.banner[it].title}/${state.banner[it].url.encode()}")
+                    })
+            }
+
         }
         itemsIndexed(items = state.list) { index, item -> //遍历内容和索引
             MessageListItem(item, index)

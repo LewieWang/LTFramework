@@ -35,6 +35,7 @@ dependencyResolutionManagement {
             alias('x_compose_livedata').to("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1")
             alias('x_compose_vm_compose').to("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1")
             alias('x_compose_navigation').to("androidx.navigation:navigation-compose:2.4.2")
+            alias('x_compose_constraintlayout').to("androidx.constraintlayout:constraintlayout-compose:1.1.0-alpha01")
             alias('x_lifecycle').to('androidx.lifecycle:lifecycle-runtime-ktx:2.3.1')
             alias('x_coroutines').to('org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1')
             alias('x_corou_core').to('org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1')
@@ -50,7 +51,7 @@ dependencyResolutionManagement {
                            'x_compose_tools','x_compose_activity','x_lifecycle','x_coroutines','hilt'
             ,'retrofit2','logging_interceptor','x_corou_core','gson','x_compose_extensions','x_compose_viewmodel'
             ,'x_compose_livedata','x_compose_vm_compose','accompanist_systemui','x_compose_navigation'
-            ,'accompanist_navigation_animation','accompanist_pager','accompanist_pg_indicators'])
+            ,'accompanist_navigation_animation','accompanist_pager','accompanist_pg_indicators','x_compose_constraintlayout'])
             bundle('compiler',['h_compiler'])
             bundle('app',['hilt'])
         }

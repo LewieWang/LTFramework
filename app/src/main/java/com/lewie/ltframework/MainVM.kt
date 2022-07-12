@@ -1,5 +1,7 @@
 package com.lewie.ltframework
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.*
 import com.lewie.base.model.BannerData
 import com.lewie.base.model.Data
@@ -16,7 +18,7 @@ class MainVM @Inject constructor(
 ) : ViewModel() {
 
 
-     private val banner : Flow<Result<List<BannerData>>> = repository.getBanner().asResult()
+    private val banner : Flow<Result<List<BannerData>>> = repository.getBanner().asResult()
 
     private val list : Flow<Result<Data>> = repository.getListStream().asResult()
 

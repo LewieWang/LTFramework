@@ -8,6 +8,8 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.widget.Toast
+import com.lewie.base.common.ext.no
+import com.lewie.base.common.ext.otherwise
 
 fun log(msg: String) {
     Log.e("log", msg);
@@ -25,9 +27,10 @@ fun toast(string: String) {
  * @return Boolean
  */
 fun takeToast(content: String?, notShow: Boolean): Boolean {
-    if (!notShow) {
+    notShow.no {
         toast(content ?: "null")
     }
+
     return notShow
 }
 

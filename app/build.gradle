@@ -35,6 +35,8 @@ android {
     }
     buildFeatures {
         compose true
+        viewBinding = true
+
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
@@ -49,6 +51,7 @@ android {
 
 dependencies {
     api project(':core-net')
+    api project(':video')
     api libs.bundles.app
     kapt libs.bundles.compiler
 }

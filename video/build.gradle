@@ -1,11 +1,10 @@
 plugins {
     id 'com.android.library'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
+    id 'org.jetbrains.kotlin.android'
 }
 
 android {
+    namespace 'com.lewie.video'
     compileSdk libs.versions.compilesdk.get().toInteger()
 
     defaultConfig {
@@ -13,15 +12,11 @@ android {
         targetSdk libs.versions.targetsdk.get().toInteger()
         versionCode libs.versions.versionCode.get().toInteger()
         versionName  libs.versions.versionName.get()
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
     }
-
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
         }
     }
     compileOptions {
@@ -31,16 +26,8 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {
-    api libs.bundles.base
-    api libs.bundles.androidX
-    api libs.bundles.compose
-    api libs.bundles.accompanist
-    kapt libs.bundles.compiler
+    api project(':base')
 }

@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    compileSdk 30
+    compileSdk libs.versions.compilesdk.get().toInteger()
 
     defaultConfig {
         minSdk 21

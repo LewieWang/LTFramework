@@ -45,11 +45,15 @@ dependencyResolutionManagement {
             alias('gson').to('com.squareup.retrofit2:converter-gson:2.9.0')
             alias('hilt').to('com.google.dagger:hilt-android:2.38.1')
             alias('h_compiler').to('com.google.dagger:hilt-android-compiler:2.38.1')
+            alias('video_player').to('cn.jzvd:jiaozivideoplayer:7.7.0')
+            alias('refresh_kernel').to('io.github.scwang90:refresh-layout-kernel:2.0.5')
+            alias('refresh_header').to('io.github.scwang90:refresh-header-classics:2.0.5')
+            alias('refresh_footer').to('io.github.scwang90:refresh-footer-classics:2.0.5')
 
             bundle('accompanist',['accompanist_systemui','accompanist_navigation_animation','accompanist_pager','accompanist_pg_indicators'])
             bundle('compose',['x_compose_ui','x_compose_material', 'x_compose_tools','x_compose_activity','x_compose_extensions','x_compose_viewmodel','x_compose_livedata','x_compose_vm_compose','x_core','x_compose_navigation','x_compose_constraintlayout'])
             bundle('androidX',['x_lifecycle','x_coroutines','x_corou_core','x_appcompat','x_viewpager2'])
-            bundle('base', ['coil','coilcompose','gson', 'material', 'hilt','retrofit2','logging_interceptor'])
+            bundle('base', ['coil','coilcompose','gson', 'material', 'hilt','retrofit2','logging_interceptor','video_player','refresh_kernel','refresh_header','refresh_footer'])
             bundle('compiler',['h_compiler'])
             bundle('app',['hilt'])
         }
